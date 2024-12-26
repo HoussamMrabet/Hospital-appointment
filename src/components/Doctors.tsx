@@ -4,17 +4,17 @@ const doctors = [
   {
     name: 'Dr. Mohammed El Fahfouhi',
     specialty: 'Cardiology',
-    image: 'src/assets/simo.jpeg',
+    image: '/assets/simo.jpeg',
   },
   {
     name: 'Dr. Mohammed El Fahfouhi',
     specialty: 'Neurology',
-    image: 'src/assets/simo.jpeg',
+    image: '/assets/simo.jpeg',
   },
   {
     name: 'Dr. Mohammed El Fahfouhi',
     specialty: 'Pediatrics',
-    image: 'src/assets/simo.jpeg',
+    image: '/assets/simo.jpeg',
   },
 ];
 
