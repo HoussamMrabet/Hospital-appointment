@@ -2,15 +2,17 @@ import React, { useState } from 'react';
 import { Link, useLocation } from 'react-router-dom';
 import { Phone, Search, Calendar, Menu, X } from 'lucide-react';
 import { useSmoothScroll } from '../hooks/useSmoothScroll';
+import AppointmentModal from './appointments/AppointmentModal';
 
 export default function Header() {
   const [isMenuOpen, setIsMenuOpen] = useState(false);
+  const [isAppointmentModalOpen, setIsAppointmentModalOpen] = useState(false);
   const { scrollToSection } = useSmoothScroll();
   const location = useLocation();
 
   const navLinks = [
     { id: 'services', label: 'Services' },
-    { id: 'doctors', label: 'Doctors' },
+    { path: '/specialists', label: 'Specialists' },
     { id: 'patients', label: 'Patients' },
     { path: '/news', label: 'News' },
     { id: 'faq', label: 'FAQ' },
@@ -35,7 +37,6 @@ export default function Header() {
 
   return (
     <header className="bg-white shadow-sm fixed w-full top-0 z-50">
-      {/* Top bar remains the same */}
       <div className="bg-blue-900 text-white py-2">
         <div className="container mx-auto px-4 flex justify-between items-center">
           <div className="flex items-center space-x-4">
@@ -64,13 +65,17 @@ export default function Header() {
 
           <div className="hidden md:flex space-x-6">
             {navLinks.map((item) => (
-              item.label === 'News' ? (
-                <Link to={item.path} key={item.path} className="text-gray-700 hover:text-blue-900 transition-colors">
+              item.path ? (
+                <Link
+                  key={item.path}
+                  to={item.path}
+                  className="text-gray-700 hover:text-blue-900 transition-colors"
+                >
                   {item.label}
                 </Link>
               ) : (
                 <button
-                  key={item.id || item.path}
+                  key={item.id}
                   onClick={() => handleNavClick(item)}
                   className="text-gray-700 hover:text-blue-900 transition-colors"
                 >
@@ -84,13 +89,13 @@ export default function Header() {
             <button className="p-2 hover:bg-gray-100 rounded-full">
               <Search size={20} className="text-gray-600" />
             </button>
-            <Link
-              to="/appointments"
+            <button
+              onClick={() => setIsAppointmentModalOpen(true)}
               className="bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center space-x-2 hover:bg-blue-700"
             >
               <Calendar size={18} />
               <span>Book Appointment</span>
-            </Link>
+            </button>
           </div>
         </div>
 
@@ -106,18 +111,25 @@ export default function Header() {
                   {item.label}
                 </button>
               ))}
-              <Link
-                to="/appointments"
-                onClick={() => setIsMenuOpen(false)}
+              <button
+                onClick={() => {
+                  setIsAppointmentModalOpen(true);
+                  setIsMenuOpen(false);
+                }}
                 className="bg-blue-600 text-white px-4 py-2 rounded-lg flex items-center justify-center space-x-2 hover:bg-blue-700"
               >
                 <Calendar size={18} />
                 <span>Book Appointment</span>
-              </Link>
+              </button>
             </div>
           </div>
         )}
       </nav>
+
+      <AppointmentModal
+        isOpen={isAppointmentModalOpen}
+        onClose={() => setIsAppointmentModalOpen(false)}
+      />
     </header>
   );
 }
