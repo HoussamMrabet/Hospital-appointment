@@ -1,4 +1,4 @@
-interface TimeSlot {
+export interface TimeSlot {
   time: string;
   available: boolean;
 }
@@ -8,7 +8,7 @@ const WORKING_HOURS = {
   end: 17, // 5 PM
 };
 
-export function getAvailableTimeSlots(date: Date): TimeSlot[] {
+export function getTimeSlots(date: Date): TimeSlot[] {
   const slots: TimeSlot[] = [];
   const today = new Date();
   const isToday = date.toDateString() === today.toDateString();

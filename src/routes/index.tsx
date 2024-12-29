@@ -4,6 +4,9 @@ import HomePage from '../pages/HomePage';
 import NewsPage from '../pages/news/NewsPage';
 import NewsArticlePage from '../pages/news/NewsArticlePage';
 import SpecialistsPage from '../pages/specialists/SpecialistsPage';
+import TechnologyPage from '../pages/technology/TechnologyPage';
+import InsurancePage from '../pages/insurance/InsurancePage';
+import CareersPage from '../pages/careers/CareersPage';
 
 export const router = createBrowserRouter([
   {
@@ -14,6 +17,9 @@ export const router = createBrowserRouter([
       { path: 'news', element: <NewsPage /> },
       { path: 'news/:articleId', element: <NewsArticlePage /> },
       { path: 'specialists', element: <SpecialistsPage /> },
+      { path: 'technology', element: <TechnologyPage /> },
+      { path: 'insurance', element: <InsurancePage /> },
+      { path: 'careers', element: <CareersPage /> },
     ],
   },
 ]);

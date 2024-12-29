@@ -21,7 +21,7 @@ export default function AppointmentModal({ isOpen, onClose }: AppointmentModalPr
               onClick={onClose}
               className="p-2 hover:bg-gray-100 rounded-full transition-colors"
             >
-              <X className="w-5 h-5" />
+              <X className="text-black w-5 h-5" />
             </button>
           </div>
         </div>

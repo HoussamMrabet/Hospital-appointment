@@ -1,7 +1,12 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { ArrowRight } from 'lucide-react';
+import DoctorSearchModal from './doctors/DoctorSearchModal';
+import VirtualTourModal from './tour/VirtualTourModal';
 
 export default function Hero() {
+  const [isSearchModalOpen, setIsSearchModalOpen] = useState(false);
+  const [isTourModalOpen, setIsTourModalOpen] = useState(false);
+
   return (
     <div className="relative bg-gradient-to-r from-blue-900 to-blue-800 text-white min-h-[600px] flex items-center mt-32">
       <div className="absolute inset-0">
@@ -20,16 +25,32 @@ export default function Hero() {
             Leading the way in medical excellence with cutting-edge technology and compassionate care.
           </p>
           <div className="flex space-x-4">
-            <button className="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors">
+            <button
+              onClick={() => setIsSearchModalOpen(true)}
+              className="bg-white text-blue-900 px-8 py-3 rounded-lg font-semibold hover:bg-blue-50 transition-colors"
+            >
               Find a Doctor
             </button>
-            <button className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors flex items-center space-x-2">
+            <button
+              onClick={() => setIsTourModalOpen(true)}
+              className="border-2 border-white text-white px-8 py-3 rounded-lg font-semibold hover:bg-white/10 transition-colors flex items-center space-x-2"
+            >
               <span>Virtual Tour</span>
               <ArrowRight size={18} />
             </button>
           </div>
         </div>
       </div>
+
+      <DoctorSearchModal
+        isOpen={isSearchModalOpen}
+        onClose={() => setIsSearchModalOpen(false)}
+      />
+      
+      <VirtualTourModal
+        isOpen={isTourModalOpen}
+        onClose={() => setIsTourModalOpen(false)}
+      />
     </div>
   );
 }

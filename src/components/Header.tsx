@@ -11,11 +11,9 @@ export default function Header() {
   const location = useLocation();
 
   const navLinks = [
-    { id: 'services', label: 'Services' },
     { path: '/specialists', label: 'Specialists' },
-    { id: 'patients', label: 'Patients' },
+    { path: '/technology', label: 'Technologies' },
     { path: '/news', label: 'News' },
-    { id: 'faq', label: 'FAQ' },
     { id: 'contact', label: 'Contact' },
   ];
 
@@ -53,7 +51,7 @@ export default function Header() {
       <nav className="container mx-auto px-4 py-4">
         <div className="flex justify-between items-center">
           <Link to="/" className="text-2xl font-bold text-blue-900">
-            MedCare Plus
+            MedCare
           </Link>
 
           <button

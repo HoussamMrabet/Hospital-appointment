@@ -9,7 +9,6 @@ export default function EmergencyButton() {
       aria-label="Emergency Call"
     >
       <Phone className="animate-pulse" size={24} />
-      <span className="hidden md:inline">Emergency</span>
     </a>
   );
 }
